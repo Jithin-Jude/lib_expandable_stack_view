@@ -6,4 +6,11 @@
     android:transitionName="fade"
     tools:context=".ExpandedViewActivity">
 
+    <ImageView
+        android:id="@+id/ivExpandedImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:transitionName="fade"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 </androidx.constraintlayout.widget.ConstraintLayout>

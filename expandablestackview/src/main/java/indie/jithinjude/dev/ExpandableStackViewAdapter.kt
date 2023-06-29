@@ -44,12 +44,12 @@ class ExpandableStackViewAdapter(
                 .into(binding.ivBgImage)
 
             binding.root.setOnClickListener {
-                expandableStackViewTapListener.onTapExpandableStackView()
+                expandableStackViewTapListener.onTapExpandableStackView(data)
             }
         }
     }
 
     interface ExpandableStackViewTapListener {
-        fun onTapExpandableStackView()
+        fun onTapExpandableStackView(item: StackItemModel)
     }
 }

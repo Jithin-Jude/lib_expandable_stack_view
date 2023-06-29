@@ -45,7 +45,7 @@ class ExpandableStackView : FrameLayout {
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
-            override fun onTapExpandableStackView() {
+            override fun onTapExpandableStackView(item: StackItemModel) {
                 Log.d("TAG", "onTapExpandableStackView :=>")
                 val intent = Intent(context, ExpandedViewActivity::class.java)
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -53,6 +53,7 @@ class ExpandableStackView : FrameLayout {
                     binding.rvStackView,
                     ViewCompat.getTransitionName(binding.rvStackView)!!
                 )
+                intent.putExtra(KEY_SELECTED_ITEM, item)
                 context.startActivity(intent, options.toBundle())
             }
         }
@@ -77,5 +78,9 @@ class ExpandableStackView : FrameLayout {
             R.dimen.viewpager_current_item_horizontal_margin
         )
         binding.rvStackView.addItemDecoration(itemDecoration)
+    }
+
+    companion object {
+        const val KEY_SELECTED_ITEM = "selected_item"
     }
 }
