@@ -1,4 +1,4 @@
-package indie.jithinjude.expandablestackview
+package indie.jithinjude.dev
 
 import android.content.Context
 import android.util.AttributeSet
