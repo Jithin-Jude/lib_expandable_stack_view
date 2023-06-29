@@ -3,7 +3,7 @@ package indie.jithinjude.dev
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.transition.Explode
+import android.transition.Fade
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
@@ -44,7 +44,7 @@ class ExpandableStackView : FrameLayout {
         }
 
 
-        val fade = Explode()
+        val fade = Fade()
         activity.window.enterTransition = fade
         activity.window.exitTransition = fade
 

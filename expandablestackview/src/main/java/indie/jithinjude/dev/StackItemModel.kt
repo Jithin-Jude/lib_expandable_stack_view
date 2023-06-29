@@ -9,7 +9,7 @@ data class StackItemModel(
     var title: String = "Title",
     var subtitle: String = "Subtitle",
     var btc: Double = 0.0,
-    var bgImageUrl: String = "https://i.ytimg.com/vi/LQCF4P1Wh6Q/maxresdefault.jpg",
+    var bgImageUrl: String = "https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg",
 
     @IntegerRes
     var weatherIcon: Int = 0,

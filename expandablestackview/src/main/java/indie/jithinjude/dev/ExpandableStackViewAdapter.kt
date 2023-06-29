@@ -3,6 +3,7 @@ package indie.jithinjude.dev
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
 /**
@@ -34,6 +35,13 @@ class ExpandableStackViewAdapter(
 
         fun bindData(data: StackItemModel) {
             binding.tvTitle.text = data.title
+            binding.tvSubtitle.text = data.subtitle
+            binding.button.text = "${data.btc}BTC"
+
+            Glide.with(binding.root.context)
+                .load(data.bgImageUrl)
+                .placeholder(R.drawable.bg_img)
+                .into(binding.ivBgImage)
 
             binding.root.setOnClickListener {
                 expandableStackViewTapListener.onTapExpandableStackView()

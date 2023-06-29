@@ -1,7 +1,7 @@
 package indie.jithinjude.dev
 
 import android.os.Bundle
-import android.transition.Explode
+import android.transition.Fade
 import androidx.appcompat.app.AppCompatActivity
 
 class ExpandedViewActivity : AppCompatActivity() {
@@ -9,7 +9,7 @@ class ExpandedViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_expanded_view)
 
-        val fade = Explode()
+        val fade = Fade()
 
         window.enterTransition = fade
         window.exitTransition = fade

@@ -2,11 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:background="@color/pure_black">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/transparent"
         app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +17,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/backgroundImageView"
+                android:id="@+id/ivBgImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop" />
@@ -32,7 +35,10 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/vr"
+                android:textColor="@color/pure_white"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -42,19 +48,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:text="TextView"
-                app:layout_constraintBottom_toTopOf="@+id/textView3"
-                app:layout_constraintStart_toStartOf="@+id/textView3" />
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/pure_white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
+                app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
+                tools:text="TextView" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="TextView"
+                android:fontFamily="@font/roboto"
+                android:textAllCaps="true"
+                android:textColor="@color/subtitle"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="TextView" />
 
             <Button
                 android:id="@+id/button"
@@ -63,6 +76,7 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="Button"
+                android:drawableStart="@android:drawable/ic_menu_call"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
