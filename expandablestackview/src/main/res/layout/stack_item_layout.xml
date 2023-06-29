@@ -20,25 +20,32 @@
                 android:id="@+id/ivBgImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_img" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_overlay" />
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginBottom="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/tvTitle"
                 app:layout_constraintStart_toStartOf="@+id/tvTitle"
-                app:srcCompat="?android:attr/actionModeFindDrawable" />
+                app:srcCompat="@drawable/ic_vr" />
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
                 android:text="@string/vr"
                 android:textColor="@color/pure_white"
-                android:textSize="18sp"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/roboto"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageView"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -48,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:fontFamily="@font/roboto_bold"
+                android:fontFamily="@font/roboto"
                 android:textColor="@color/pure_white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
@@ -64,19 +71,24 @@
                 android:fontFamily="@font/roboto"
                 android:textAllCaps="true"
                 android:textColor="@color/subtitle"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:text="TextView" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/rounded_corner_button"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="20dp"
-                android:text="Button"
-                android:drawableStart="@android:drawable/ic_menu_call"
+                android:drawableStart="@drawable/ic_vr"
+                android:drawablePadding="8dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:textColor="@color/pure_white"
+                tools:text="Button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 

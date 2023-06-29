@@ -1,6 +1,6 @@
 package indie.jithinjude.dev
 
-import androidx.annotation.IntegerRes
+import androidx.annotation.DrawableRes
 
 /**
  * Created by <Jithin/Jude> on 29,June,2023
@@ -11,7 +11,7 @@ data class StackItemModel(
     var btc: Double = 0.0,
     var bgImageUrl: String = "https://img.freepik.com/free-photo/beautiful-view-greenery-bridge-forest-perfect-background_181624-17827.jpg",
 
-    @IntegerRes
+    @DrawableRes
     var weatherIcon: Int = 0,
     var temperature: String = "00",
     var weatherStatus: String = "Light Rain",

@@ -36,12 +36,7 @@ class ExpandableStackView : FrameLayout {
         binding = LayoutExpandableStackViewBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
-    fun prepareExpandableStackView(activity: Activity) {
-
-        val stackItemList = mutableListOf<StackItemModel>()
-        for (i in 1..10) {
-            stackItemList.add(StackItemModel())
-        }
+    fun prepareExpandableStackView(activity: Activity, stackItemList: MutableList<StackItemModel>) {
 
 
         val fade = Fade()
