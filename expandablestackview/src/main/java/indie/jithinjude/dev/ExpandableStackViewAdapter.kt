@@ -8,7 +8,10 @@ import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 /**
  * Created by <Jithin/Jude> on 29,June,2023
  */
-class ExpandableStackViewAdapter(private val dataList: List<StackItemModel>) :
+class ExpandableStackViewAdapter(
+    private val dataList: List<StackItemModel>,
+    private val expandableStackViewTapListener: ExpandableStackViewTapListener
+) :
     RecyclerView.Adapter<ExpandableStackViewAdapter.ExpandableStackViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpandableStackViewHolder {
@@ -31,6 +34,14 @@ class ExpandableStackViewAdapter(private val dataList: List<StackItemModel>) :
 
         fun bindData(data: StackItemModel) {
             binding.tvTitle.text = data.title
+
+            binding.root.setOnClickListener {
+                expandableStackViewTapListener.onTapExpandableStackView()
+            }
         }
+    }
+
+    interface ExpandableStackViewTapListener {
+        fun onTapExpandableStackView()
     }
 }
