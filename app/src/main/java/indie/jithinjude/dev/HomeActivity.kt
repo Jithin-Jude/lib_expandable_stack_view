@@ -45,14 +45,14 @@ class HomeActivity : AppCompatActivity() {
         )
         stackItemList.add(
             StackItemModel(
-                title = "Trivandrum",
+                title = "Delhi",
                 subtitle = "Trivian",
                 btc = 0.3,
                 bgImageUrl = "https://e0.pxfuel.com/wallpapers/281/308/desktop-wallpaper-latest-nature-iphone-cool-nature.jpg",
                 weatherIcon = R.drawable.ic_rain,
                 temperature = "30",
                 weatherStatus = "Heavy Rain",
-                placeDescription = "Thiruvananthapuram (or Trivandrum) is the capital of the southern Indian state of Kerala."
+                placeDescription = "India’s capital territory, is a massive metropolitan area in the country’s north."
             )
         )
 

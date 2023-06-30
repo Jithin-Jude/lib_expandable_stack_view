@@ -29,53 +29,66 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient_overlay" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginBottom="2dp"
-                app:layout_constraintBottom_toTopOf="@+id/tvTitle"
-                app:layout_constraintStart_toStartOf="@+id/tvTitle"
-                app:srcCompat="@drawable/ic_vr" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/vr"
-                android:textColor="@color/pure_white"
-                android:layout_marginStart="8dp"
-                android:fontFamily="@font/roboto"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                app:layout_constraintTop_toTopOf="@+id/imageView" />
-
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="2dp"
-                android:fontFamily="@font/roboto"
-                android:textColor="@color/pure_white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toTopOf="@+id/tvSubtitle"
-                app:layout_constraintStart_toStartOf="@+id/tvSubtitle"
-                tools:text="TextView" />
-
-            <TextView
-                android:id="@+id/tvSubtitle"
+            <LinearLayout
+                android:id="@+id/layoutMinimizedInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginBottom="20dp"
-                android:fontFamily="@font/roboto"
-                android:textAllCaps="true"
-                android:textColor="@color/subtitle"
-                android:textSize="12sp"
+                android:gravity="start"
+                android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                tools:text="TextView" />
+                app:layout_constraintStart_toStartOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/layoutMinimizedVr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:srcCompat="@drawable/ic_vr" />
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/roboto"
+                        android:includeFontPadding="false"
+                        android:text="@string/vr"
+                        android:textColor="@color/pure_white"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:lines="1"
+                    android:textColor="@color/pure_white"
+                    android:textSize="18sp"
+                    tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:textAllCaps="true"
+                    android:textColor="@color/subtitle"
+                    android:textSize="12sp"
+                    tools:text="TextView" />
+
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button"

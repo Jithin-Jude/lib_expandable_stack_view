@@ -3,11 +3,18 @@ package indie.jithinjude.dev
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.Matrix
+import android.graphics.RectF
+import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
+import androidx.core.app.ActivityCompat.setEnterSharedElementCallback
+import androidx.core.app.ActivityCompat.setExitSharedElementCallback
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.app.SharedElementCallback
 import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
 import indie.jithinjude.dev.databinding.LayoutExpandableStackViewBinding
@@ -30,6 +37,7 @@ class ExpandableStackView : FrameLayout {
     }
 
     lateinit var binding: LayoutExpandableStackViewBinding
+    lateinit var mItemBinding: StackItemLayoutBinding
 
     fun init() {
         binding = LayoutExpandableStackViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -37,13 +45,82 @@ class ExpandableStackView : FrameLayout {
 
     fun prepareExpandableStackView(activity: Activity, stackItemList: MutableList<StackItemModel>) {
 
-//        val transitionEnter: Transition =
-//            TransitionInflater.from(context).inflateTransition(android.R.transition.slide_top)
-//        val transitionExit: Transition =
-//            TransitionInflater.from(context).inflateTransition(android.R.transition.slide_bottom)
-//
-//        activity.window.enterTransition = transitionEnter
-//        activity.window.exitTransition = transitionExit
+        val sharedElementCallback = object : SharedElementCallback() {
+            override fun onSharedElementStart(
+                sharedElementNames: MutableList<String>?,
+                sharedElements: MutableList<View>?,
+                sharedElementSnapshots: MutableList<View>?
+            ) {
+                Log.d("TAG", "SharedElementCallback :=> onSharedElementStart")
+                super.onSharedElementStart(
+                    sharedElementNames,
+                    sharedElements,
+                    sharedElementSnapshots
+                )
+                mItemBinding.layoutMinimizedVr.visibility = View.INVISIBLE
+                mItemBinding.tvSubtitle.visibility = View.INVISIBLE
+            }
+
+            override fun onSharedElementEnd(
+                sharedElementNames: MutableList<String>?,
+                sharedElements: MutableList<View>?,
+                sharedElementSnapshots: MutableList<View>?
+            ) {
+                super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots)
+                Log.d("TAG", "SharedElementCallback :=> onSharedElementEnd")
+
+                mItemBinding.layoutMinimizedVr.visibility = View.VISIBLE
+                mItemBinding.tvSubtitle.visibility = View.VISIBLE
+            }
+
+            override fun onRejectSharedElements(rejectedSharedElements: MutableList<View>?) {
+                Log.d("TAG", "SharedElementCallback :=> onRejectSharedElements")
+                super.onRejectSharedElements(rejectedSharedElements)
+            }
+
+            override fun onMapSharedElements(
+                names: MutableList<String>?,
+                sharedElements: MutableMap<String, View>?
+            ) {
+                Log.d("TAG", "SharedElementCallback :=> onMapSharedElements")
+
+                // Called when mapping shared elements between activities
+                // You can customize the mapping of shared elements here
+
+                // Example: Map a specific shared element by name to a different view
+//                sharedElements?.put("my_shared_element", myCustomView)
+            }
+
+            override fun onCaptureSharedElementSnapshot(
+                sharedElement: View?,
+                viewToGlobalMatrix: Matrix?,
+                screenBounds: RectF?
+            ): Parcelable {
+                Log.d("TAG", "SharedElementCallback :=> onCaptureSharedElementSnapshot")
+                return super.onCaptureSharedElementSnapshot(
+                    sharedElement,
+                    viewToGlobalMatrix,
+                    screenBounds
+                )
+            }
+
+            override fun onCreateSnapshotView(context: Context?, snapshot: Parcelable?): View {
+                Log.d("TAG", "SharedElementCallback :=> onCreateSnapshotView")
+                return super.onCreateSnapshotView(context, snapshot)
+            }
+
+            override fun onSharedElementsArrived(
+                sharedElementNames: MutableList<String>?,
+                sharedElements: MutableList<View>?,
+                listener: OnSharedElementsReadyListener?
+            ) {
+                Log.d("TAG", "SharedElementCallback :=> onSharedElementsArrived")
+                super.onSharedElementsArrived(sharedElementNames, sharedElements, listener)
+            }
+        }
+
+        setExitSharedElementCallback(activity, sharedElementCallback)
+        setEnterSharedElementCallback(activity, sharedElementCallback)
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
@@ -51,6 +128,8 @@ class ExpandableStackView : FrameLayout {
                 item: StackItemModel,
                 itemBinding: StackItemLayoutBinding
             ) {
+                mItemBinding = itemBinding
+
                 val intent = Intent(context, ExpandedViewActivity::class.java)
 
                 val backgroundView: Pair<View, String> = Pair(
@@ -63,10 +142,16 @@ class ExpandableStackView : FrameLayout {
                     "$KEY_SHARED_ELEMENT_BUTTON${binding.rvStackView.currentItem}"
                 )
 
+                val titleView: Pair<View, String> = Pair(
+                    itemBinding.tvTitle,
+                    "$KEY_SHARED_ELEMENT_TITLE${binding.rvStackView.currentItem}"
+                )
+
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     activity,
                     backgroundView,
-                    buttonView
+                    buttonView,
+                    titleView
                 )
 
                 intent.putExtra(KEY_SELECTED_ITEM, item)
@@ -105,5 +190,6 @@ class ExpandableStackView : FrameLayout {
 
         const val KEY_SHARED_ELEMENT_ITEM = "shared_element_item_"
         const val KEY_SHARED_ELEMENT_BUTTON = "shared_element_button_"
+        const val KEY_SHARED_ELEMENT_TITLE = "shared_element_title_"
     }
 }

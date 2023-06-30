@@ -32,6 +32,8 @@ class ExpandedViewActivity : AppCompatActivity() {
             "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}$currentItem"
         binding.button.transitionName =
             "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}$currentItem"
+        binding.tvTitle.transitionName =
+            "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}$currentItem"
 
 //        val transitionSet = TransitionSet()
 //        val changeBounds = ChangeBounds()

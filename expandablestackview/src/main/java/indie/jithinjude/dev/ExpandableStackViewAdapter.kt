@@ -40,6 +40,8 @@ class ExpandableStackViewAdapter(
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}${adapterPosition}"
             binding.button.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
+            binding.tvTitle.transitionName =
+                "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}${adapterPosition}"
 
 
 //            val transitionSet = TransitionSet()
@@ -55,8 +57,8 @@ class ExpandableStackViewAdapter(
 //            transitionSet.addTransition(changeTransform)
 //            transitionSet.addTransition(changeImageTransform)
 //            transitionSet.addTransition(changeClipBounds)
-//            transitionSet.addTarget(binding.button)
-//            mActivity.window.sharedElementEnterTransition = transitionSet
+//            transitionSet.excludeTarget(binding.button, true)
+//            mActivity.window.sharedElementExitTransition = transitionSet
 
             binding.tvTitle.text = data.title
             binding.tvSubtitle.text = data.subtitle
@@ -74,6 +76,6 @@ class ExpandableStackViewAdapter(
     }
 
     interface ExpandableStackViewTapListener {
-        fun onTapExpandableStackView(item: StackItemModel, binding: StackItemLayoutBinding)
+        fun onTapExpandableStackView(item: StackItemModel, itemBinding: StackItemLayoutBinding)
     }
 }
