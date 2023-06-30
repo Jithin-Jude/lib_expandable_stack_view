@@ -10,8 +10,8 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
-import androidx.core.app.ActivityCompat.setEnterSharedElementCallback
 import androidx.core.app.ActivityCompat.setExitSharedElementCallback
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.SharedElementCallback
@@ -69,8 +69,13 @@ class ExpandableStackView : FrameLayout {
                 super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots)
                 Log.d("TAG", "SharedElementCallback :=> onSharedElementEnd")
 
-                mItemBinding.layoutMinimizedVr.visibility = View.VISIBLE
-                mItemBinding.tvSubtitle.visibility = View.VISIBLE
+                val fadeInAnimation = AnimationUtils.loadAnimation(
+                    mItemBinding.layoutMinimizedVr.context,
+                    R.anim.fade_in
+                )
+
+                mItemBinding.layoutMinimizedVr.startAnimation(fadeInAnimation)
+                mItemBinding.tvSubtitle.startAnimation(fadeInAnimation)
             }
 
             override fun onRejectSharedElements(rejectedSharedElements: MutableList<View>?) {
@@ -120,7 +125,7 @@ class ExpandableStackView : FrameLayout {
         }
 
         setExitSharedElementCallback(activity, sharedElementCallback)
-        setEnterSharedElementCallback(activity, sharedElementCallback)
+//        setEnterSharedElementCallback(activity, sharedElementCallback)
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {

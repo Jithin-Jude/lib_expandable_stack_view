@@ -2,6 +2,7 @@ package indie.jithinjude.dev
 
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_CURRENT_ITEM
@@ -61,6 +62,14 @@ class ExpandedViewActivity : AppCompatActivity() {
                 .load(it.bgImageUrl)
                 .into(binding.ivExpandedImage)
         }
+
+        val fadeInAnimation = AnimationUtils.loadAnimation(
+            this,
+            R.anim.fade_in
+        )
+        binding.layoutWeather.startAnimation(fadeInAnimation)
+        binding.tvDescription.startAnimation(fadeInAnimation)
+        binding.linearLayout.startAnimation(fadeInAnimation)
 
         binding.root.setOnClickListener {
             binding.btnText.visibility = View.GONE

@@ -40,6 +40,7 @@
         android:layout_marginHorizontal="80dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/rounded_corner_bg"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/tvDescription"
         tools:layout_editor_absoluteX="120dp">
 
@@ -113,6 +114,7 @@
         android:gravity="center"
         android:textColor="@color/pure_white"
         android:textSize="12sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -124,6 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:gravity="center"
+        android:visibility="invisible"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/button">
 
