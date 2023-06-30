@@ -76,6 +76,7 @@ class ExpandableStackView : FrameLayout {
 
                 mItemBinding.layoutMinimizedVr.startAnimation(fadeInAnimation)
                 mItemBinding.tvSubtitle.startAnimation(fadeInAnimation)
+                mItemBinding.viewOverLay.startAnimation(fadeInAnimation)
             }
 
             override fun onRejectSharedElements(rejectedSharedElements: MutableList<View>?) {
