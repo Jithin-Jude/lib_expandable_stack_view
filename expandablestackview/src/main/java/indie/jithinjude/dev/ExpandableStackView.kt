@@ -3,14 +3,12 @@ package indie.jithinjude.dev
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.transition.Fade
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.app.ActivityOptionsCompat
-import androidx.core.view.ViewCompat
 import androidx.viewpager2.widget.ViewPager2
 import indie.jithinjude.dev.databinding.LayoutExpandableStackViewBinding
 
@@ -38,22 +36,22 @@ class ExpandableStackView : FrameLayout {
 
     fun prepareExpandableStackView(activity: Activity, stackItemList: MutableList<StackItemModel>) {
 
-
-        val fade = Fade()
-        activity.window.enterTransition = fade
-        activity.window.exitTransition = fade
+//        val fade = Fade()
+//        activity.window.enterTransition = fade
+//        activity.window.exitTransition = fade
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
-            override fun onTapExpandableStackView(item: StackItemModel) {
+            override fun onTapExpandableStackView(item: StackItemModel, view: View) {
                 Log.d("TAG", "onTapExpandableStackView :=>")
                 val intent = Intent(context, ExpandedViewActivity::class.java)
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     activity,
-                    binding.rvStackView,
-                    ViewCompat.getTransitionName(binding.rvStackView)!!
+                    view,
+                    "$KEY_TRANSITION_NAME_PREFIX${binding.rvStackView.currentItem}"
                 )
                 intent.putExtra(KEY_SELECTED_ITEM, item)
+                intent.putExtra(KEY_CURRENT_ITEM, binding.rvStackView.currentItem)
                 context.startActivity(intent, options.toBundle())
             }
         }
@@ -78,9 +76,27 @@ class ExpandableStackView : FrameLayout {
             R.dimen.viewpager_current_item_horizontal_margin
         )
         binding.rvStackView.addItemDecoration(itemDecoration)
+
+
+//        val callback = object : SharedElementCallback() {
+//            override fun onMapSharedElements(
+//                names: MutableList<String>,
+//                sharedElements: MutableMap<String, View>
+//            ) {
+//                // Get the currently selected item in the ViewPager2
+//                val currentItem = binding.rvStackView.currentItem
+//
+//                // Map the shared element name to the root view of the current fragment
+//                val sharedElementView = binding.rvStackView.findViewWithTag<View>("shared_element_$currentItem")
+//                sharedElements[names[0]] = sharedElementView
+//            }
+//        }
+//        setEnterSharedElementCallback(activity, callback)
     }
 
     companion object {
+        const val KEY_CURRENT_ITEM = "current_item"
         const val KEY_SELECTED_ITEM = "selected_item"
+        const val KEY_TRANSITION_NAME_PREFIX = "shared_element_"
     }
 }

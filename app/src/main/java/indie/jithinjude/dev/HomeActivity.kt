@@ -1,6 +1,7 @@
 package indie.jithinjude.dev
 
 import android.os.Bundle
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import indie.jithinjude.dev.databinding.ActivityMainBinding
 
@@ -10,6 +11,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
+        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         setContentView(view)
 
         binding.esvLayout.prepareExpandableStackView(this, getDummyData())
