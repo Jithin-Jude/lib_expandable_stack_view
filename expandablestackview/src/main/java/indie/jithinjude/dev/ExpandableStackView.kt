@@ -60,11 +60,22 @@ class ExpandableStackView : FrameLayout {
 //                    "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
 //                )
 
-                val p1: Pair<View, String> = Pair(
+                val backgroundView: Pair<View, String> = Pair(
                     itemBinding.root,
                     "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
                 )
-                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, p1)
+
+
+                val buttonView: Pair<View, String> = Pair(
+                    itemBinding.button,
+                    "$KEY_SHARED_ELEMENT_BUTTON${binding.rvStackView.currentItem}"
+                )
+
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    activity,
+                    backgroundView,
+                    buttonView
+                )
 
                 intent.putExtra(KEY_SELECTED_ITEM, item)
                 intent.putExtra(KEY_CURRENT_ITEM, binding.rvStackView.currentItem)
@@ -72,7 +83,8 @@ class ExpandableStackView : FrameLayout {
             }
         }
 
-        val adapter = ExpandableStackViewAdapter(stackItemList, expandableStackViewTapListener)
+        val adapter =
+            ExpandableStackViewAdapter(stackItemList, expandableStackViewTapListener, activity)
         binding.rvStackView.adapter = adapter
 
         binding.rvStackView.offscreenPageLimit = 1
@@ -100,5 +112,6 @@ class ExpandableStackView : FrameLayout {
         const val KEY_SELECTED_ITEM = "selected_item"
 
         const val KEY_SHARED_ELEMENT_ITEM = "shared_element_item_"
+        const val KEY_SHARED_ELEMENT_BUTTON = "shared_element_button_"
     }
 }
