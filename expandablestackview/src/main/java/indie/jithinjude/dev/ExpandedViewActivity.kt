@@ -1,6 +1,7 @@
 package indie.jithinjude.dev
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_CURRENT_ITEM
@@ -60,6 +61,7 @@ class ExpandedViewActivity : AppCompatActivity() {
         }
 
         binding.root.setOnClickListener {
+            binding.btnText.visibility = View.GONE
             supportFinishAfterTransition()
         }
     }
