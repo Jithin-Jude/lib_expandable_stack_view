@@ -1,8 +1,6 @@
 package indie.jithinjude.dev
 
 import android.os.Bundle
-import android.transition.Fade
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_CURRENT_ITEM
@@ -16,23 +14,28 @@ class ExpandedViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityExpandedViewBinding.inflate(layoutInflater)
         val view = binding.root
-        window.requestFeature(Window.FEATURE_CONTENT_TRANSITIONS)
         setContentView(view)
+
+//        val transitionEnter: Transition =
+//            TransitionInflater.from(this).inflateTransition(android.R.transition.slide_top)
+//        val transitionExit: Transition =
+//            TransitionInflater.from(this).inflateTransition(android.R.transition.slide_bottom)
+//
+//        window.enterTransition = transitionEnter
+//        window.exitTransition = transitionExit
 
         val data = intent.getSerializableExtra(KEY_SELECTED_ITEM) as? StackItemModel
         val currentItem = intent.getIntExtra(KEY_CURRENT_ITEM, 0)
 
         val rootView = binding.root
-        rootView.transitionName = "shared_element_$currentItem"
+        rootView.transitionName = "${ExpandableStackView.KEY_TRANSITION_NAME_PREFIX}$currentItem"
 
         Glide.with(binding.root.context)
             .load(data?.bgImageUrl)
-            .placeholder(R.drawable.bg_img)
             .into(binding.ivExpandedImage)
 
-        val fade = Fade()
-
-        window.enterTransition = fade
-        window.exitTransition = fade
+        binding.root.setOnClickListener {
+            supportFinishAfterTransition()
+        }
     }
 }

@@ -36,9 +36,13 @@ class ExpandableStackView : FrameLayout {
 
     fun prepareExpandableStackView(activity: Activity, stackItemList: MutableList<StackItemModel>) {
 
-//        val fade = Fade()
-//        activity.window.enterTransition = fade
-//        activity.window.exitTransition = fade
+//        val transitionEnter: Transition =
+//            TransitionInflater.from(context).inflateTransition(android.R.transition.slide_top)
+//        val transitionExit: Transition =
+//            TransitionInflater.from(context).inflateTransition(android.R.transition.slide_bottom)
+//
+//        activity.window.enterTransition = transitionEnter
+//        activity.window.exitTransition = transitionExit
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
@@ -77,21 +81,6 @@ class ExpandableStackView : FrameLayout {
         )
         binding.rvStackView.addItemDecoration(itemDecoration)
 
-
-//        val callback = object : SharedElementCallback() {
-//            override fun onMapSharedElements(
-//                names: MutableList<String>,
-//                sharedElements: MutableMap<String, View>
-//            ) {
-//                // Get the currently selected item in the ViewPager2
-//                val currentItem = binding.rvStackView.currentItem
-//
-//                // Map the shared element name to the root view of the current fragment
-//                val sharedElementView = binding.rvStackView.findViewWithTag<View>("shared_element_$currentItem")
-//                sharedElements[names[0]] = sharedElementView
-//            }
-//        }
-//        setEnterSharedElementCallback(activity, callback)
     }
 
     companion object {

@@ -20,8 +20,8 @@
                 android:id="@+id/ivBgImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@drawable/bg_img" />
+                android:scaleType="fitXY"
+                tools:src="@drawable/bg_img" />
 
             <View
                 android:layout_width="match_parent"
