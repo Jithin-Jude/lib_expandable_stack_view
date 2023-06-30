@@ -1,3 +1,6 @@
 <resources>
     <string name="vr">VR</string>
+    <string name="schedule_trip">Schedule Trip</string>
+    <string name="gallery">Gallery</string>
+    <string name="vr_tour">Vr Tour</string>
 </resources>

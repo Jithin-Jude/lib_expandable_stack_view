@@ -30,9 +30,16 @@ class ExpandedViewActivity : AppCompatActivity() {
         val rootView = binding.root
         rootView.transitionName = "${ExpandableStackView.KEY_TRANSITION_NAME_PREFIX}$currentItem"
 
-        Glide.with(binding.root.context)
-            .load(data?.bgImageUrl)
-            .into(binding.ivExpandedImage)
+        data?.let {
+            binding.tvTitle.text = it.title
+            binding.tvDescription.text = it.placeDescription
+            binding.tvWeatherTemperature.text = "${it.temperature}\u2103"
+            binding.tvStatus.text = it.weatherStatus
+
+            Glide.with(binding.root.context)
+                .load(it.bgImageUrl)
+                .into(binding.ivExpandedImage)
+        }
 
         binding.root.setOnClickListener {
             supportFinishAfterTransition()
