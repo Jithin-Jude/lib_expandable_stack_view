@@ -1,7 +1,6 @@
 package indie.jithinjude.dev
 
 import android.app.Activity
-import android.transition.*
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -37,33 +36,33 @@ class ExpandableStackViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(data: StackItemModel) {
-            binding.ivBgImage.transitionName =
+            binding.cvRoundedCornerView.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}${adapterPosition}"
             binding.button.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
 
 
-            val transitionSet = TransitionSet()
-
-            val changeBounds = ChangeBounds()
-            changeBounds.addTarget(binding.button)
-
-            val changeTransform = ChangeTransform()
-            changeTransform.addTarget(binding.button)
-
-            val changeImageTransform = ChangeImageTransform()
-            changeImageTransform.addTarget(binding.button)
-
-            val changeClipBounds = ChangeClipBounds()
-            changeClipBounds.addTarget(binding.button)
-
-            transitionSet.addTransition(changeBounds)
-            transitionSet.addTransition(changeTransform)
-            transitionSet.addTransition(changeImageTransform)
-            transitionSet.addTransition(changeClipBounds)
-
-            transitionSet.excludeTarget(binding.button, true)
-            mActivity.window.sharedElementEnterTransition = transitionSet
+//            val transitionSet = TransitionSet()
+//
+//            val changeBounds = ChangeBounds()
+//            changeBounds.addTarget(binding.button)
+//
+//            val changeTransform = ChangeTransform()
+//            changeTransform.addTarget(binding.button)
+//
+//            val changeImageTransform = ChangeImageTransform()
+//            changeImageTransform.addTarget(binding.button)
+//
+//            val changeClipBounds = ChangeClipBounds()
+//            changeClipBounds.addTarget(binding.button)
+//
+//            transitionSet.addTransition(changeBounds)
+//            transitionSet.addTransition(changeTransform)
+//            transitionSet.addTransition(changeImageTransform)
+//            transitionSet.addTransition(changeClipBounds)
+//
+//            transitionSet.excludeTarget(binding.button, true)
+//            mActivity.window.sharedElementEnterTransition = transitionSet
 
             binding.tvTitle.text = data.title
             binding.tvSubtitle.text = data.subtitle

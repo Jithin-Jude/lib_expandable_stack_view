@@ -1,7 +1,6 @@
 package indie.jithinjude.dev
 
 import android.os.Bundle
-import android.transition.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_CURRENT_ITEM
@@ -33,27 +32,27 @@ class ExpandedViewActivity : AppCompatActivity() {
         binding.button.transitionName =
             "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}$currentItem"
 
-        val transitionSet = TransitionSet()
-
-        val changeBounds = ChangeBounds()
-        changeBounds.addTarget(binding.button)
-
-        val changeTransform = ChangeTransform()
-        changeTransform.addTarget(binding.button)
-
-        val changeImageTransform = ChangeImageTransform()
-        changeImageTransform.addTarget(binding.button)
-
-        val changeClipBounds = ChangeClipBounds()
-        changeClipBounds.addTarget(binding.button)
-
-        transitionSet.addTransition(changeBounds)
-        transitionSet.addTransition(changeTransform)
-        transitionSet.addTransition(changeImageTransform)
-        transitionSet.addTransition(changeClipBounds)
-
-        transitionSet.excludeTarget(binding.button, true)
-        window.sharedElementEnterTransition = transitionSet
+//        val transitionSet = TransitionSet()
+//
+//        val changeBounds = ChangeBounds()
+//        changeBounds.addTarget(binding.button)
+//
+//        val changeTransform = ChangeTransform()
+//        changeTransform.addTarget(binding.button)
+//
+//        val changeImageTransform = ChangeImageTransform()
+//        changeImageTransform.addTarget(binding.button)
+//
+//        val changeClipBounds = ChangeClipBounds()
+//        changeClipBounds.addTarget(binding.button)
+//
+//        transitionSet.addTransition(changeBounds)
+//        transitionSet.addTransition(changeTransform)
+//        transitionSet.addTransition(changeImageTransform)
+//        transitionSet.addTransition(changeClipBounds)
+//
+//        transitionSet.excludeTarget(binding.button, true)
+//        window.sharedElementEnterTransition = transitionSet
 
         data?.let {
             binding.tvTitle.text = it.title
