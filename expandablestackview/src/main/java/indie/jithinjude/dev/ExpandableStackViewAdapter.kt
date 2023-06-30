@@ -1,11 +1,10 @@
 package indie.jithinjude.dev
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_TRANSITION_NAME_PREFIX
+import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_SHARED_ELEMENT_ITEM
 import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
 /**
@@ -36,7 +35,7 @@ class ExpandableStackViewAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(data: StackItemModel) {
-            binding.root.transitionName = "$KEY_TRANSITION_NAME_PREFIX${adapterPosition}"
+            binding.root.transitionName = "$KEY_SHARED_ELEMENT_ITEM${adapterPosition}"
 
             binding.tvTitle.text = data.title
             binding.tvSubtitle.text = data.subtitle
@@ -48,12 +47,12 @@ class ExpandableStackViewAdapter(
                 .into(binding.ivBgImage)
 
             binding.root.setOnClickListener {
-                expandableStackViewTapListener.onTapExpandableStackView(data, binding.root)
+                expandableStackViewTapListener.onTapExpandableStackView(data, binding)
             }
         }
     }
 
     interface ExpandableStackViewTapListener {
-        fun onTapExpandableStackView(item: StackItemModel, view: View)
+        fun onTapExpandableStackView(item: StackItemModel, binding: StackItemLayoutBinding)
     }
 }

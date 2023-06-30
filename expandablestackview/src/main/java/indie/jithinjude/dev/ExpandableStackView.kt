@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
 import indie.jithinjude.dev.databinding.LayoutExpandableStackViewBinding
+import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
 
 /**
@@ -46,14 +48,24 @@ class ExpandableStackView : FrameLayout {
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
-            override fun onTapExpandableStackView(item: StackItemModel, view: View) {
+            override fun onTapExpandableStackView(
+                item: StackItemModel,
+                itemBinding: StackItemLayoutBinding
+            ) {
                 Log.d("TAG", "onTapExpandableStackView :=>")
                 val intent = Intent(context, ExpandedViewActivity::class.java)
-                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity,
-                    view,
-                    "$KEY_TRANSITION_NAME_PREFIX${binding.rvStackView.currentItem}"
+//                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                    activity,
+//                    view,
+//                    "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
+//                )
+
+                val p1: Pair<View, String> = Pair(
+                    itemBinding.root,
+                    "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
                 )
+                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, p1)
+
                 intent.putExtra(KEY_SELECTED_ITEM, item)
                 intent.putExtra(KEY_CURRENT_ITEM, binding.rvStackView.currentItem)
                 context.startActivity(intent, options.toBundle())
@@ -86,6 +98,7 @@ class ExpandableStackView : FrameLayout {
     companion object {
         const val KEY_CURRENT_ITEM = "current_item"
         const val KEY_SELECTED_ITEM = "selected_item"
-        const val KEY_TRANSITION_NAME_PREFIX = "shared_element_"
+
+        const val KEY_SHARED_ELEMENT_ITEM = "shared_element_item_"
     }
 }

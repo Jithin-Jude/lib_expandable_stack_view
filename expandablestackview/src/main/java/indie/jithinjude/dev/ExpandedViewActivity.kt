@@ -27,8 +27,7 @@ class ExpandedViewActivity : AppCompatActivity() {
         val data = intent.getSerializableExtra(KEY_SELECTED_ITEM) as? StackItemModel
         val currentItem = intent.getIntExtra(KEY_CURRENT_ITEM, 0)
 
-        val rootView = binding.root
-        rootView.transitionName = "${ExpandableStackView.KEY_TRANSITION_NAME_PREFIX}$currentItem"
+        binding.root.transitionName = "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}$currentItem"
 
         data?.let {
             binding.tvTitle.text = it.title
