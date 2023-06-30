@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
@@ -52,19 +51,12 @@ class ExpandableStackView : FrameLayout {
                 item: StackItemModel,
                 itemBinding: StackItemLayoutBinding
             ) {
-                Log.d("TAG", "onTapExpandableStackView :=>")
                 val intent = Intent(context, ExpandedViewActivity::class.java)
-//                val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-//                    activity,
-//                    view,
-//                    "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
-//                )
 
                 val backgroundView: Pair<View, String> = Pair(
-                    itemBinding.root,
+                    itemBinding.cvRoundedCornerView,
                     "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
                 )
-
 
                 val buttonView: Pair<View, String> = Pair(
                     itemBinding.button,
