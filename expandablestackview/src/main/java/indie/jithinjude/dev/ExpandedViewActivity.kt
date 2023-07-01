@@ -66,5 +66,8 @@ class ExpandedViewActivity : AppCompatActivity() {
             binding.btnText.visibility = View.GONE
             supportFinishAfterTransition()
         }
+        binding.button.setOnClickListener {
+            PhaseOneBottomSheet.showPhaseOneBottomSheet(supportFragmentManager)
+        }
     }
 }
