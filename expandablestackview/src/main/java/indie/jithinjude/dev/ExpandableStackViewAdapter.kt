@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
 /**
@@ -67,6 +68,7 @@ class ExpandableStackViewAdapter(
             Glide.with(binding.root.context)
                 .load(data.bgImageUrl)
                 .placeholder(R.drawable.bg_img)
+                .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivBgImage)
 
             binding.root.setOnClickListener {
