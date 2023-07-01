@@ -1,8 +1,10 @@
-package indie.jithinjude.dev
+package indie.jithinjude.dvlpr
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import indie.jithinjude.dev.databinding.ActivityMainBinding
+import indie.jithinjude.dev.R
+import indie.jithinjude.dev.StackItemModel
+import indie.jithinjude.dvlpr.databinding.ActivityMainBinding
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
