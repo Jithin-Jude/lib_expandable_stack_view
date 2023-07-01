@@ -6,17 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import indie.jithinjude.dev.databinding.BottomSheetPhaseOneBinding
 
 
 /**
  * Created by <Jithin/Jude> on 01,July,2023
  */
 class PhaseOneBottomSheet : BottomSheetDialogFragment() {
+
+    lateinit var binding: BottomSheetPhaseOneBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.bottom_sheet_phase_one, container, false)
+
+        binding =
+            BottomSheetPhaseOneBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     companion object {
