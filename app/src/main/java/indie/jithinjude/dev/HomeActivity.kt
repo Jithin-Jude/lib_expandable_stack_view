@@ -20,6 +20,18 @@ class HomeActivity : AppCompatActivity() {
         val stackItemList = mutableListOf<StackItemModel>()
         stackItemList.add(
             StackItemModel(
+                title = "Ophiuchi",
+                subtitle = "Kaduna",
+                btc = 0.4,
+                bgImageUrl = "https://e0.pxfuel.com/wallpapers/380/774/desktop-wallpaper-cape-town-iphone-11-cape-town-south-africa-thumbnail.jpg",
+                weatherIcon = R.drawable.ic_rain,
+                temperature = "36",
+                weatherStatus = "Light Rain",
+                placeDescription = "Kaduna is the capital city of Kaduna State, and the former political capital of Northern Nigeria."
+            )
+        )
+        stackItemList.add(
+            StackItemModel(
                 title = "Santorini",
                 subtitle = "New Osogbq",
                 btc = 0.6,
@@ -28,6 +40,18 @@ class HomeActivity : AppCompatActivity() {
                 temperature = "32",
                 weatherStatus = "Light Rain",
                 placeDescription = "\"Santorini\" is a popular tourist destination and a Greek island located in the southern Aegean Sea. It is part of the Cyclades archipelago and is known for its stunning natural beauty, picturesque villages, and unique architecture."
+            )
+        )
+        stackItemList.add(
+            StackItemModel(
+                title = "Marrakech",
+                subtitle = "Neptune",
+                btc = 2.8,
+                bgImageUrl = "https://w0.peakpx.com/wallpaper/295/964/HD-wallpaper-morocco-marrakech-africa-city-mosque-red-city.jpg",
+                weatherIcon = R.drawable.ic_rain,
+                temperature = "32",
+                weatherStatus = "Heavy Rain",
+                placeDescription = "Marrakesh, a former imperial city in western Morocco, is a major economic center and home to mosques, palaces and gardens."
             )
         )
 
@@ -45,14 +69,14 @@ class HomeActivity : AppCompatActivity() {
         )
         stackItemList.add(
             StackItemModel(
-                title = "Delhi",
-                subtitle = "Trivian",
-                btc = 0.3,
-                bgImageUrl = "https://e0.pxfuel.com/wallpapers/281/308/desktop-wallpaper-latest-nature-iphone-cool-nature.jpg",
+                title = "Maldives",
+                subtitle = "Asia",
+                btc = 1.8,
+                bgImageUrl = "https://w0.peakpx.com/wallpaper/132/815/HD-wallpaper-maldives-beach-beauty-blue-clouds-house-ocean-palm-sea-slum-sun-water.jpg",
                 weatherIcon = R.drawable.ic_rain,
-                temperature = "30",
-                weatherStatus = "Heavy Rain",
-                placeDescription = "India’s capital territory, is a massive metropolitan area in the country’s north."
+                temperature = "28",
+                weatherStatus = "Light Rain",
+                placeDescription = "The Maldives, officially the Republic of Maldives, is an archipelagic state and country in South Asia, situated in the Indian Ocean."
             )
         )
 

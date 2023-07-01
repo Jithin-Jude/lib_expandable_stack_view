@@ -17,6 +17,7 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.SharedElementCallback
 import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
+import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import indie.jithinjude.dev.databinding.LayoutExpandableStackViewBinding
 import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
@@ -37,7 +38,7 @@ class ExpandableStackView : FrameLayout {
     }
 
     lateinit var binding: LayoutExpandableStackViewBinding
-    lateinit var mItemBinding: StackItemLayoutBinding
+    var mItemBinding: StackItemLayoutBinding? = null
 
     fun init() {
         binding = LayoutExpandableStackViewBinding.inflate(LayoutInflater.from(context), this, true)
@@ -57,8 +58,8 @@ class ExpandableStackView : FrameLayout {
                     sharedElements,
                     sharedElementSnapshots
                 )
-                mItemBinding.layoutMinimizedVr.visibility = View.INVISIBLE
-                mItemBinding.tvSubtitle.visibility = View.INVISIBLE
+                mItemBinding?.layoutMinimizedVr?.visibility = View.INVISIBLE
+                mItemBinding?.tvSubtitle?.visibility = View.INVISIBLE
             }
 
             override fun onSharedElementEnd(
@@ -67,16 +68,15 @@ class ExpandableStackView : FrameLayout {
                 sharedElementSnapshots: MutableList<View>?
             ) {
                 super.onSharedElementEnd(sharedElementNames, sharedElements, sharedElementSnapshots)
-                Log.d("TAG", "SharedElementCallback :=> onSharedElementEnd")
 
                 val fadeInAnimation = AnimationUtils.loadAnimation(
-                    mItemBinding.layoutMinimizedVr.context,
+                    context,
                     R.anim.fade_in
                 )
 
-                mItemBinding.layoutMinimizedVr.startAnimation(fadeInAnimation)
-                mItemBinding.tvSubtitle.startAnimation(fadeInAnimation)
-                mItemBinding.viewOverLay.startAnimation(fadeInAnimation)
+                mItemBinding?.layoutMinimizedVr?.startAnimation(fadeInAnimation)
+                mItemBinding?.tvSubtitle?.startAnimation(fadeInAnimation)
+                mItemBinding?.viewOverLay?.startAnimation(fadeInAnimation)
             }
 
             override fun onRejectSharedElements(rejectedSharedElements: MutableList<View>?) {
@@ -126,7 +126,6 @@ class ExpandableStackView : FrameLayout {
         }
 
         setExitSharedElementCallback(activity, sharedElementCallback)
-//        setEnterSharedElementCallback(activity, sharedElementCallback)
 
         val expandableStackViewTapListener = object :
             ExpandableStackViewAdapter.ExpandableStackViewTapListener {
@@ -164,6 +163,10 @@ class ExpandableStackView : FrameLayout {
                 intent.putExtra(KEY_CURRENT_ITEM, binding.rvStackView.currentItem)
                 context.startActivity(intent, options.toBundle())
             }
+
+            override fun onBindStackViewItem(itemBinding: StackItemLayoutBinding) {
+                mItemBinding = itemBinding
+            }
         }
 
         val adapter =
@@ -187,6 +190,26 @@ class ExpandableStackView : FrameLayout {
             R.dimen.viewpager_current_item_horizontal_margin
         )
         binding.rvStackView.addItemDecoration(itemDecoration)
+
+        binding.rvStackView.registerOnPageChangeCallback(object : OnPageChangeCallback() {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+            }
+
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                mItemBinding?.layoutMinimizedVr?.visibility = View.VISIBLE
+                mItemBinding?.tvSubtitle?.visibility = View.VISIBLE
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+                super.onPageScrollStateChanged(state)
+            }
+        })
 
     }
 

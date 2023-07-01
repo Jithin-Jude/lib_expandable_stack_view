@@ -77,5 +77,6 @@ class ExpandableStackViewAdapter(
 
     interface ExpandableStackViewTapListener {
         fun onTapExpandableStackView(item: StackItemModel, itemBinding: StackItemLayoutBinding)
+        fun onBindStackViewItem(itemBinding: StackItemLayoutBinding)
     }
 }
