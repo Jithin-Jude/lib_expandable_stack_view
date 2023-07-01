@@ -7,7 +7,6 @@ import android.graphics.Matrix
 import android.graphics.RectF
 import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -52,7 +51,6 @@ class ExpandableStackView : FrameLayout {
                 sharedElements: MutableList<View>?,
                 sharedElementSnapshots: MutableList<View>?
             ) {
-                Log.d("TAG", "SharedElementCallback :=> onSharedElementStart")
                 super.onSharedElementStart(
                     sharedElementNames,
                     sharedElements,
@@ -80,7 +78,6 @@ class ExpandableStackView : FrameLayout {
             }
 
             override fun onRejectSharedElements(rejectedSharedElements: MutableList<View>?) {
-                Log.d("TAG", "SharedElementCallback :=> onRejectSharedElements")
                 super.onRejectSharedElements(rejectedSharedElements)
             }
 
@@ -88,13 +85,7 @@ class ExpandableStackView : FrameLayout {
                 names: MutableList<String>?,
                 sharedElements: MutableMap<String, View>?
             ) {
-                Log.d("TAG", "SharedElementCallback :=> onMapSharedElements")
 
-                // Called when mapping shared elements between activities
-                // You can customize the mapping of shared elements here
-
-                // Example: Map a specific shared element by name to a different view
-//                sharedElements?.put("my_shared_element", myCustomView)
             }
 
             override fun onCaptureSharedElementSnapshot(
@@ -102,7 +93,6 @@ class ExpandableStackView : FrameLayout {
                 viewToGlobalMatrix: Matrix?,
                 screenBounds: RectF?
             ): Parcelable {
-                Log.d("TAG", "SharedElementCallback :=> onCaptureSharedElementSnapshot")
                 return super.onCaptureSharedElementSnapshot(
                     sharedElement,
                     viewToGlobalMatrix,
@@ -111,7 +101,6 @@ class ExpandableStackView : FrameLayout {
             }
 
             override fun onCreateSnapshotView(context: Context?, snapshot: Parcelable?): View {
-                Log.d("TAG", "SharedElementCallback :=> onCreateSnapshotView")
                 return super.onCreateSnapshotView(context, snapshot)
             }
 
@@ -120,7 +109,6 @@ class ExpandableStackView : FrameLayout {
                 sharedElements: MutableList<View>?,
                 listener: OnSharedElementsReadyListener?
             ) {
-                Log.d("TAG", "SharedElementCallback :=> onSharedElementsArrived")
                 super.onSharedElementsArrived(sharedElementNames, sharedElements, listener)
             }
         }
@@ -170,7 +158,7 @@ class ExpandableStackView : FrameLayout {
         }
 
         val adapter =
-            ExpandableStackViewAdapter(stackItemList, expandableStackViewTapListener, activity)
+            ExpandableStackViewAdapter(stackItemList, expandableStackViewTapListener)
         binding.rvStackView.adapter = adapter
 
         binding.rvStackView.offscreenPageLimit = 1
