@@ -20,6 +20,10 @@ While implementing the shared element transitions I’m able to implement the ba
 ## Future improvements
 More actions can be added to the expanded view (means more states). `ChangeBounds`, `ChangeTransform`, `ChangeImageTransform`, and `ChangeClipBounds` can be customize for the transition of each shared elements. So that it will more improve the flow.
 
+Demo video:
+-
+[![demo video](https://img.youtube.com/vi/ul2OylQ4hEE/0.jpg)](https://www.youtube.com/watch?v=ul2OylQ4hEE)
+
 ![result](https://github.com/Jithin-Jude/lib_expandable_stack_view/blob/02b808133a4bb81f8f41bd05df1e5507d33755cd/screenshots/expendable_stack_view.gif)
 
 ## Libraries used
