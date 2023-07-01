@@ -9,19 +9,19 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btmSheetLayout"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
-        android:background="@drawable/rounded_corner_bottom_sheet_grey">
+        android:layout_height="100dp"
+        android:background="@drawable/rounded_corner_bottom_sheet_pink">
 
         <TextView
-            android:id="@+id/tvHi"
+            android:id="@+id/tvHi2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="50dp"
+            android:layout_marginVertical="20dp"
             android:gravity="center"
             android:text="Hi"
-            android:textSize="70sp"
+            android:textSize="40sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
