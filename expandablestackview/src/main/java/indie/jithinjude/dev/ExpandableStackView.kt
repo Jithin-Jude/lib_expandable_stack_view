@@ -112,7 +112,6 @@ class ExpandableStackView : FrameLayout {
                 super.onSharedElementsArrived(sharedElementNames, sharedElements, listener)
             }
         }
-
         setExitSharedElementCallback(activity, sharedElementCallback)
 
         val expandableStackViewTapListener = object :
@@ -127,17 +126,17 @@ class ExpandableStackView : FrameLayout {
 
                 val backgroundView: Pair<View, String> = Pair(
                     itemBinding.cvRoundedCornerView,
-                    "$KEY_SHARED_ELEMENT_ITEM${binding.rvStackView.currentItem}"
+                    "$KEY_SHARED_ELEMENT_ITEM${binding.vpStackView.currentItem}"
                 )
 
                 val buttonView: Pair<View, String> = Pair(
                     itemBinding.button,
-                    "$KEY_SHARED_ELEMENT_BUTTON${binding.rvStackView.currentItem}"
+                    "$KEY_SHARED_ELEMENT_BUTTON${binding.vpStackView.currentItem}"
                 )
 
                 val titleView: Pair<View, String> = Pair(
                     itemBinding.tvTitle,
-                    "$KEY_SHARED_ELEMENT_TITLE${binding.rvStackView.currentItem}"
+                    "$KEY_SHARED_ELEMENT_TITLE${binding.vpStackView.currentItem}"
                 )
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -148,7 +147,7 @@ class ExpandableStackView : FrameLayout {
                 )
 
                 intent.putExtra(KEY_SELECTED_ITEM, item)
-                intent.putExtra(KEY_CURRENT_ITEM, binding.rvStackView.currentItem)
+                intent.putExtra(KEY_CURRENT_ITEM, binding.vpStackView.currentItem)
                 context.startActivity(intent, options.toBundle())
             }
 
@@ -159,10 +158,9 @@ class ExpandableStackView : FrameLayout {
 
         val adapter =
             ExpandableStackViewAdapter(stackItemList, expandableStackViewTapListener)
-        binding.rvStackView.adapter = adapter
+        binding.vpStackView.adapter = adapter
 
-        binding.rvStackView.offscreenPageLimit = 1
-
+        binding.vpStackView.offscreenPageLimit = 1
         val nextItemVisiblePx = resources.getDimension(R.dimen.viewpager_next_item_visible)
         val currentItemHorizontalMarginPx =
             resources.getDimension(R.dimen.viewpager_current_item_horizontal_margin)
@@ -171,31 +169,17 @@ class ExpandableStackView : FrameLayout {
             page.translationX = -pageTranslationX * position
             page.scaleY = 1 - (0.25f * kotlin.math.abs(position))
         }
-        binding.rvStackView.setPageTransformer(pageTransformer)
-
+        binding.vpStackView.setPageTransformer(pageTransformer)
         val itemDecoration = ItemSpacingDecoration(
             context,
             R.dimen.viewpager_current_item_horizontal_margin
         )
-        binding.rvStackView.addItemDecoration(itemDecoration)
-
-        binding.rvStackView.registerOnPageChangeCallback(object : OnPageChangeCallback() {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-
+        binding.vpStackView.addItemDecoration(itemDecoration)
+        binding.vpStackView.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 mItemBinding?.layoutMinimizedVr?.visibility = View.VISIBLE
                 mItemBinding?.tvSubtitle?.visibility = View.VISIBLE
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
             }
         })
 

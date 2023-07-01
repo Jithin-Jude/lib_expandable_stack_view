@@ -5,7 +5,7 @@
     android:background="@color/pure_black">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/rvStackView"
+        android:id="@+id/vpStackView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginVertical="20dp" />

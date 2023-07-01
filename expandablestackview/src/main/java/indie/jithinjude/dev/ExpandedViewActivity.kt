@@ -21,13 +21,22 @@ class ExpandedViewActivity : AppCompatActivity() {
         val data = intent.getSerializableExtra(KEY_SELECTED_ITEM) as? StackItemModel
         val currentItem = intent.getIntExtra(KEY_CURRENT_ITEM, 0)
 
+        prepareTransitions(currentItem)
+        prepareViews(data)
+        prepareAnimations()
+        prepareTapListeners()
+    }
+
+    fun prepareTransitions(currentItem: Int) {
         binding.ivExpandedImage.transitionName =
             "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}$currentItem"
         binding.button.transitionName =
             "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}$currentItem"
         binding.tvTitle.transitionName =
             "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}$currentItem"
+    }
 
+    fun prepareViews(data: StackItemModel?) {
         data?.let {
             binding.tvTitle.text = it.title
             binding.tvDescription.text = it.placeDescription
@@ -38,6 +47,9 @@ class ExpandedViewActivity : AppCompatActivity() {
                 .load(it.bgImageUrl)
                 .into(binding.ivExpandedImage)
         }
+    }
+
+    fun prepareAnimations() {
 
         val fadeInAnimation = AnimationUtils.loadAnimation(
             this,
@@ -47,7 +59,9 @@ class ExpandedViewActivity : AppCompatActivity() {
         binding.tvDescription.startAnimation(fadeInAnimation)
         binding.linearLayout.startAnimation(fadeInAnimation)
         binding.expandedViewOverLay.startAnimation(fadeInAnimation)
+    }
 
+    fun prepareTapListeners() {
         binding.root.setOnClickListener {
             binding.btnText.visibility = View.GONE
             supportFinishAfterTransition()

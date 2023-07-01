@@ -24,7 +24,9 @@ class ExpandableStackViewAdapter(
 
     override fun onBindViewHolder(holder: ExpandableStackViewHolder, position: Int) {
         val data = dataList[position]
+        holder.bindTransition()
         holder.bindData(data)
+        holder.bindTapListeners(data)
     }
 
     override fun getItemCount(): Int {
@@ -34,13 +36,16 @@ class ExpandableStackViewAdapter(
     inner class ExpandableStackViewHolder(private val binding: StackItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(data: StackItemModel) {
+        fun bindTransition() {
             binding.cvRoundedCornerView.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}${adapterPosition}"
             binding.button.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
             binding.tvTitle.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}${adapterPosition}"
+        }
+
+        fun bindData(data: StackItemModel) {
 
             binding.tvTitle.text = data.title
             binding.tvSubtitle.text = data.subtitle
@@ -51,7 +56,9 @@ class ExpandableStackViewAdapter(
                 .placeholder(R.drawable.bg_img)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.ivBgImage)
+        }
 
+        fun bindTapListeners(data: StackItemModel) {
             binding.root.setOnClickListener {
                 expandableStackViewTapListener.onTapExpandableStackView(data, binding)
             }
