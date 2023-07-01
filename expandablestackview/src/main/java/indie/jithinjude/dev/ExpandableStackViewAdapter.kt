@@ -38,11 +38,11 @@ class ExpandableStackViewAdapter(
 
         fun bindTransition() {
             binding.cvRoundedCornerView.transitionName =
-                "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}${adapterPosition}"
+                "${Constants.KEY_SHARED_ELEMENT_ITEM}${adapterPosition}"
             binding.button.transitionName =
-                "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
+                "${Constants.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
             binding.tvTitle.transitionName =
-                "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}${adapterPosition}"
+                "${Constants.KEY_SHARED_ELEMENT_TITLE}${adapterPosition}"
         }
 
         fun bindData(data: StackItemModel) {

@@ -17,6 +17,8 @@ import androidx.core.app.SharedElementCallback
 import androidx.core.util.Pair
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
+import indie.jithinjude.dev.Constants.KEY_CURRENT_ITEM
+import indie.jithinjude.dev.Constants.KEY_SELECTED_ITEM
 import indie.jithinjude.dev.databinding.LayoutExpandableStackViewBinding
 import indie.jithinjude.dev.databinding.StackItemLayoutBinding
 
@@ -126,17 +128,17 @@ class ExpandableStackView : FrameLayout {
 
                 val backgroundView: Pair<View, String> = Pair(
                     itemBinding.cvRoundedCornerView,
-                    "$KEY_SHARED_ELEMENT_ITEM${binding.vpStackView.currentItem}"
+                    "${Constants.KEY_SHARED_ELEMENT_ITEM}${binding.vpStackView.currentItem}"
                 )
 
                 val buttonView: Pair<View, String> = Pair(
                     itemBinding.button,
-                    "$KEY_SHARED_ELEMENT_BUTTON${binding.vpStackView.currentItem}"
+                    "${Constants.KEY_SHARED_ELEMENT_BUTTON}${binding.vpStackView.currentItem}"
                 )
 
                 val titleView: Pair<View, String> = Pair(
                     itemBinding.tvTitle,
-                    "$KEY_SHARED_ELEMENT_TITLE${binding.vpStackView.currentItem}"
+                    "${Constants.KEY_SHARED_ELEMENT_TITLE}${binding.vpStackView.currentItem}"
                 )
 
                 val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
@@ -183,14 +185,5 @@ class ExpandableStackView : FrameLayout {
             }
         })
 
-    }
-
-    companion object {
-        const val KEY_CURRENT_ITEM = "current_item"
-        const val KEY_SELECTED_ITEM = "selected_item"
-
-        const val KEY_SHARED_ELEMENT_ITEM = "shared_element_item_"
-        const val KEY_SHARED_ELEMENT_BUTTON = "shared_element_button_"
-        const val KEY_SHARED_ELEMENT_TITLE = "shared_element_title_"
     }
 }

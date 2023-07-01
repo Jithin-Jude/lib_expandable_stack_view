@@ -5,8 +5,8 @@ import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_CURRENT_ITEM
-import indie.jithinjude.dev.ExpandableStackView.Companion.KEY_SELECTED_ITEM
+import indie.jithinjude.dev.Constants.KEY_CURRENT_ITEM
+import indie.jithinjude.dev.Constants.KEY_SELECTED_ITEM
 import indie.jithinjude.dev.databinding.ActivityExpandedViewBinding
 
 class ExpandedViewActivity : AppCompatActivity() {
@@ -29,11 +29,11 @@ class ExpandedViewActivity : AppCompatActivity() {
 
     fun prepareTransitions(currentItem: Int) {
         binding.ivExpandedImage.transitionName =
-            "${ExpandableStackView.KEY_SHARED_ELEMENT_ITEM}$currentItem"
+            "${Constants.KEY_SHARED_ELEMENT_ITEM}$currentItem"
         binding.button.transitionName =
-            "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}$currentItem"
+            "${Constants.KEY_SHARED_ELEMENT_BUTTON}$currentItem"
         binding.tvTitle.transitionName =
-            "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}$currentItem"
+            "${Constants.KEY_SHARED_ELEMENT_TITLE}$currentItem"
     }
 
     fun prepareViews(data: StackItemModel?) {
