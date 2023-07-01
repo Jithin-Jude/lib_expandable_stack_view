@@ -26,6 +26,20 @@ Demo video:
 
 [APK](https://drive.google.com/file/d/1toaRGN3woEaw3VTVvxQue1DottpDSxQi/view?usp=sharing "link to APK")
 
+```xml
+<indie.jithinjude.dev.ExpandableStackView
+        android:id="@+id/esvLayout"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvSubtitle" />
+```
+```kt
+binding.esvLayout.prepareExpandableStackView(this, stackElementList)
+```
+
 ## Libraries used
 Glide: for image loading:<br/>
 https://github.com/bumptech/glide
