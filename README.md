@@ -17,6 +17,8 @@ Expandable Stack View is a library which developers can integrate into an app to
 <p>While implementing the shared element transitions I’m able to implement the background expand-collapse transitions smoothly but there was a glitch in the button expansion. I am able to sort this by modifying the button layout in the ExpandedViewActivity. Previously I was using the AppCompact button; to fix the glitch I made a custom layout for the button with a combination of CardView, LinearLayout, ImageView & TextView. Thus I’m able to achieve smoothness.<p/>
 <p>To ensure the flow & integration of all components; I have used a combination of multiple shared transitions & AnimationUtils.<p/>
 
+![result](https://github.com/Jithin-Jude/lib_expandable_stack_view/blob/02b808133a4bb81f8f41bd05df1e5507d33755cd/screenshots/expendable_stack_view.gif)
+
 ## Libraries used
 Glide: for image loading:<br/>
 https://github.com/bumptech/glide
