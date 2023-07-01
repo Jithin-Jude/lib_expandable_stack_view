@@ -15,8 +15,10 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <View
+        android:id="@+id/expandedViewOverLay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="invisible"
         android:background="#80000000" />
 
     <TextView

@@ -70,6 +70,7 @@ class ExpandedViewActivity : AppCompatActivity() {
         binding.layoutWeather.startAnimation(fadeInAnimation)
         binding.tvDescription.startAnimation(fadeInAnimation)
         binding.linearLayout.startAnimation(fadeInAnimation)
+        binding.expandedViewOverLay.startAnimation(fadeInAnimation)
 
         binding.root.setOnClickListener {
             binding.btnText.visibility = View.GONE
