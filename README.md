@@ -18,7 +18,7 @@ Expandable Stack View is a library which developers can integrate into an app to
 <p>To ensure the flow & integration of all components; I have used a combination of multiple shared transitions & AnimationUtils.<p/>
 
 ## Libraries used
-Glide: For image loading:<br/>
+Glide: for image loading:<br/>
 https://github.com/bumptech/glide
 
 ## References
