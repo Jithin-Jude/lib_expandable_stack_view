@@ -1,6 +1,5 @@
 package indie.jithinjude.dev
 
-import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +12,7 @@ import indie.jithinjude.dev.databinding.StackItemLayoutBinding
  */
 class ExpandableStackViewAdapter(
     private val dataList: List<StackItemModel>,
-    private val expandableStackViewTapListener: ExpandableStackViewTapListener,
-    private val mActivity: Activity
+    private val expandableStackViewTapListener: ExpandableStackViewTapListener
 ) :
     RecyclerView.Adapter<ExpandableStackViewAdapter.ExpandableStackViewHolder>() {
 
@@ -43,23 +41,6 @@ class ExpandableStackViewAdapter(
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_BUTTON}${adapterPosition}"
             binding.tvTitle.transitionName =
                 "${ExpandableStackView.KEY_SHARED_ELEMENT_TITLE}${adapterPosition}"
-
-
-//            val transitionSet = TransitionSet()
-//            val changeBounds = ChangeBounds()
-//            changeBounds.addTarget(binding.button)
-//            val changeTransform = ChangeTransform()
-//            changeTransform.addTarget(binding.button)
-//            val changeImageTransform = ChangeImageTransform()
-//            changeImageTransform.addTarget(binding.button)
-//            val changeClipBounds = ChangeClipBounds()
-//            changeClipBounds.addTarget(binding.button)
-//            transitionSet.addTransition(changeBounds)
-//            transitionSet.addTransition(changeTransform)
-//            transitionSet.addTransition(changeImageTransform)
-//            transitionSet.addTransition(changeClipBounds)
-//            transitionSet.excludeTarget(binding.button, true)
-//            mActivity.window.sharedElementExitTransition = transitionSet
 
             binding.tvTitle.text = data.title
             binding.tvSubtitle.text = data.subtitle
