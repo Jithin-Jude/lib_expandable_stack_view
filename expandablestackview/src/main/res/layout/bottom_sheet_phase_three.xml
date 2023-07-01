@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btmSheetLayout"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="400dp"
         android:background="@drawable/rounded_corner_bottom_sheet_grey">
 
         <TextView

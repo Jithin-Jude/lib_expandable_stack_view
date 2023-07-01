@@ -3,7 +3,6 @@ package indie.jithinjude.dev.stack_layers
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,14 +39,8 @@ class PhaseTwoBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvHi.setOnClickListener {
-            val layoutParams = binding.btmSheetLayout.layoutParams
-            val nextItemVisiblePx =
-                resources.getDimension(R.dimen.bottom_sheet_phase_2_expanded_height)
-            layoutParams.height = nextItemVisiblePx.toInt()
-            binding.btmSheetLayout.layoutParams = layoutParams
-            Log.d("TAG", "layoutParams.height = 400")
 
+        binding.phaseTwoBtmSheetPop.setOnClickListener {
             PhaseThreeBottomSheet.showPhaseThreeBottomSheet(childFragmentManager)
         }
     }

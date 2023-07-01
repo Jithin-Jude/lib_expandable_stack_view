@@ -39,7 +39,9 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
+        binding.phaseTwoBtmSheetPop.setOnClickListener {
+            PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
