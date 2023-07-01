@@ -42,12 +42,32 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fadeInAnimation = AnimationUtils.loadAnimation(
+        val animationMoveUpAndFadeOut = AnimationUtils.loadAnimation(
             binding.loadingLocation.context,
             R.anim.move_up_and_fade_out
         )
+        val animationMoveToCenterAndFadeIn = AnimationUtils.loadAnimation(
+            binding.loadingLocation.context,
+            R.anim.move_to_center_and_fade_in
+        )
+//        animationMoveUpAndFadeOut.setAnimationListener(object: Animation.AnimationListener{
+//            override fun onAnimationStart(p0: Animation?) {
+//
+//            }
+//
+//            override fun onAnimationEnd(p0: Animation?) {
+//
+//            }
+//
+//            override fun onAnimationRepeat(p0: Animation?) {
+//
+//            }
+//
+//        })
+
         Handler(Looper.getMainLooper()).postDelayed({
-            binding.loadingLocation.startAnimation(fadeInAnimation)
+            binding.loadingLocation.startAnimation(animationMoveUpAndFadeOut)
+            binding.layoutContent.startAnimation(animationMoveToCenterAndFadeIn)
         }, 2000)
 
         binding.phaseTwoBtmSheetPop.setOnClickListener {
