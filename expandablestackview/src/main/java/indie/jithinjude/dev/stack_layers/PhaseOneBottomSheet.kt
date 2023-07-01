@@ -1,4 +1,4 @@
-package indie.jithinjude.dev
+package indie.jithinjude.dev.stack_layers
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import indie.jithinjude.dev.R
 import indie.jithinjude.dev.databinding.BottomSheetPhaseOneBinding
 
 

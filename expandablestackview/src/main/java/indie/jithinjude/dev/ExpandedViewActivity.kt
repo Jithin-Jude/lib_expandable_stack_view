@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import indie.jithinjude.dev.Constants.KEY_CURRENT_ITEM
 import indie.jithinjude.dev.Constants.KEY_SELECTED_ITEM
 import indie.jithinjude.dev.databinding.ActivityExpandedViewBinding
+import indie.jithinjude.dev.stack_layers.PhaseOneBottomSheet
 
 class ExpandedViewActivity : AppCompatActivity() {
 

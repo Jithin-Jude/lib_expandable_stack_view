@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhaseOneBottomSheet">
+    tools:context=".stack_layers.PhaseOneBottomSheet">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:background="@drawable/rounded_corner_bottom_sheet_grey">
+        android:background="@drawable/rounded_corner_bottom_sheet_pink">
 
         <TextView
             android:layout_width="wrap_content"
