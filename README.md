@@ -24,7 +24,7 @@ Demo video:
 -
 [![demo video](https://img.youtube.com/vi/ul2OylQ4hEE/0.jpg)](https://www.youtube.com/watch?v=ul2OylQ4hEE)
 
-![result](https://github.com/Jithin-Jude/lib_expandable_stack_view/blob/02b808133a4bb81f8f41bd05df1e5507d33755cd/screenshots/expendable_stack_view.gif)
+[APK](https://drive.google.com/file/d/1toaRGN3woEaw3VTVvxQue1DottpDSxQi/view?usp=sharing "link to APK")
 
 ## Libraries used
 Glide: for image loading:<br/>
