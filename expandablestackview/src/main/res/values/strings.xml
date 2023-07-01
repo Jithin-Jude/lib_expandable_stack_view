@@ -5,4 +5,6 @@
     <string name="vr_tour">Vr Tour</string>
     <string name="finding_your_location">Finding your location</string>
     <string name="one_moment_while_we_get_your_location">One moment while we get your location</string>
+    <string name="trip_calendar">Trip Calendar</string>
+    <string name="departure_time">Departure Time</string>
 </resources>
