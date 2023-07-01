@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:background="@drawable/rounded_corner_bottom_sheet">
+        android:background="@drawable/rounded_corner_bottom_sheet_grey">
 
         <TextView
             android:layout_width="wrap_content"
