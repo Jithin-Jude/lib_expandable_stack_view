@@ -3,4 +3,6 @@
     <string name="schedule_trip">Schedule Trip</string>
     <string name="gallery">Gallery</string>
     <string name="vr_tour">Vr Tour</string>
+    <string name="finding_your_location">Finding your location</string>
+    <string name="one_moment_while_we_get_your_location">One moment while we get your location</string>
 </resources>

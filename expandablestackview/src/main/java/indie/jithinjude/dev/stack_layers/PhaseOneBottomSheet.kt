@@ -3,9 +3,12 @@ package indie.jithinjude.dev.stack_layers
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -38,6 +41,14 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val fadeInAnimation = AnimationUtils.loadAnimation(
+            binding.loadingLocation.context,
+            R.anim.move_up_and_fade_out
+        )
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.loadingLocation.startAnimation(fadeInAnimation)
+        }, 2000)
 
         binding.phaseTwoBtmSheetPop.setOnClickListener {
             PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
