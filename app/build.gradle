@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'indie.jithinjude.dev'
+    namespace 'indie.jithinjude.dvlpr'
     compileSdk 33
 
     defaultConfig {
-        applicationId "indie.jithinjude.dev"
+        applicationId "indie.jithinjude.dvlpr"
         minSdk 24
         targetSdk 33
         versionCode 1
