@@ -12,15 +12,15 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import indie.jithinjude.dev.R
-import indie.jithinjude.dev.databinding.BottomSheetPhaseTwoBinding
+import indie.jithinjude.dev.databinding.BottomSheetPhaseThreeBinding
 
 
 /**
  * Created by <Jithin/Jude> on 01,July,2023
  */
-class PhaseTwoBottomSheet : BottomSheetDialogFragment() {
+class PhaseThreeBottomSheet : BottomSheetDialogFragment() {
 
-    lateinit var binding: BottomSheetPhaseTwoBinding
+    lateinit var binding: BottomSheetPhaseThreeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +33,7 @@ class PhaseTwoBottomSheet : BottomSheetDialogFragment() {
     ): View? {
 
         binding =
-            BottomSheetPhaseTwoBinding.inflate(inflater, container, false)
+            BottomSheetPhaseThreeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,12 +43,10 @@ class PhaseTwoBottomSheet : BottomSheetDialogFragment() {
         binding.tvHi.setOnClickListener {
             val layoutParams = binding.btmSheetLayout.layoutParams
             val nextItemVisiblePx =
-                resources.getDimension(R.dimen.bottom_sheet_phase_2_expanded_height)
+                resources.getDimension(R.dimen.bottom_sheet_phase_3_expanded_height)
             layoutParams.height = nextItemVisiblePx.toInt()
             binding.btmSheetLayout.layoutParams = layoutParams
             Log.d("TAG", "layoutParams.height = 400")
-
-            PhaseThreeBottomSheet.showPhaseThreeBottomSheet(childFragmentManager)
         }
     }
 
@@ -63,9 +61,9 @@ class PhaseTwoBottomSheet : BottomSheetDialogFragment() {
     }
 
     companion object {
-        fun showPhaseTwoBottomSheet(supportFragmentManager: FragmentManager) {
-            val bottomSheet = PhaseTwoBottomSheet()
-            bottomSheet.show(supportFragmentManager, "PhaseTwoBottomSheet")
+        fun showPhaseThreeBottomSheet(supportFragmentManager: FragmentManager) {
+            val bottomSheet = PhaseThreeBottomSheet()
+            bottomSheet.show(supportFragmentManager, "PhaseThreeBottomSheet")
         }
     }
 }
