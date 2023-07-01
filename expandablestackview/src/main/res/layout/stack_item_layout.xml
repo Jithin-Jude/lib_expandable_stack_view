@@ -76,7 +76,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:lines="1"
                     android:textColor="@color/pure_white"
-                    android:textSize="18sp"
+                    android:textSize="28sp"
                     tools:text="Title" />
 
                 <TextView
