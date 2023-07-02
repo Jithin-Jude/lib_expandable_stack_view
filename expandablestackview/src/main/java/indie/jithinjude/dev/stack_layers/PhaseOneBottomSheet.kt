@@ -73,7 +73,7 @@ class PhaseOneBottomSheet(
         Handler(Looper.getMainLooper()).postDelayed({
             binding.loadingLocation.startAnimation(animationMoveUpAndFadeOut)
             binding.layoutContent.startAnimation(animationMoveToCenterAndFadeIn)
-        }, 2000)
+        }, 1000)
 
         binding.tvTimeBtn.setOnClickListener {
             binding.tvTimeBtn.setBackgroundColor(
