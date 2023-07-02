@@ -68,7 +68,21 @@ class ExpandedViewActivity : AppCompatActivity() {
             supportFinishAfterTransition()
         }
         binding.button.setOnClickListener {
-            PhaseOneBottomSheet.showPhaseOneBottomSheet(supportFragmentManager)
+            PhaseOneBottomSheet.showPhaseOneBottomSheet(
+                supportFragmentManager,
+                this,
+                stackDismissCallback
+            )
         }
+    }
+
+    val stackDismissCallback = object : StackDismissListener {
+        override fun onStackDismiss() {
+            supportFinishAfterTransition()
+        }
+    }
+
+    interface StackDismissListener {
+        fun onStackDismiss()
     }
 }

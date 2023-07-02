@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import indie.jithinjude.dev.ExpandedViewActivity
 import indie.jithinjude.dev.R
 import indie.jithinjude.dev.databinding.BottomSheetPhaseOneBinding
 
@@ -21,7 +22,10 @@ import indie.jithinjude.dev.databinding.BottomSheetPhaseOneBinding
 /**
  * Created by <Jithin/Jude> on 01,July,2023
  */
-class PhaseOneBottomSheet : BottomSheetDialogFragment() {
+class PhaseOneBottomSheet(
+    val mActivity: ExpandedViewActivity,
+    val dismissCallback: ExpandedViewActivity.StackDismissListener
+) : BottomSheetDialogFragment() {
 
     lateinit var binding: BottomSheetPhaseOneBinding
     var phaseTwoBtmSheetActive = false
@@ -85,7 +89,11 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
 
         binding.phaseTwoBtmSheetPop.setOnClickListener {
             if (phaseTwoBtmSheetActive) {
-                PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
+                PhaseTwoBottomSheet.showPhaseTwoBottomSheet(
+                    childFragmentManager,
+                    mActivity,
+                    stackDismissCallback
+                )
             }
         }
     }
@@ -99,11 +107,22 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
+        dismissCallback.onStackDismiss()
+    }
+
+    val stackDismissCallback = object : ExpandedViewActivity.StackDismissListener {
+        override fun onStackDismiss() {
+            dismiss()
+        }
     }
 
     companion object {
-        fun showPhaseOneBottomSheet(supportFragmentManager: FragmentManager) {
-            val bottomSheet = PhaseOneBottomSheet()
+        fun showPhaseOneBottomSheet(
+            supportFragmentManager: FragmentManager,
+            activity: ExpandedViewActivity,
+            dismissCallback: ExpandedViewActivity.StackDismissListener
+        ) {
+            val bottomSheet = PhaseOneBottomSheet(activity, dismissCallback)
             bottomSheet.show(supportFragmentManager, "PhaseOneBottomSheet")
         }
     }
