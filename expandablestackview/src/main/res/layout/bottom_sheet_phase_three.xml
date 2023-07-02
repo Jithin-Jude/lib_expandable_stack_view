@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btmSheetLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:background="@drawable/rounded_corner_bottom_sheet_grey">
 
         <LinearLayout
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto"
-                android:text="Total"
+                android:text="@string/total"
                 android:textAllCaps="true"
                 android:textColor="@color/pure_white"
                 android:textSize="12sp" />
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_bold"
-                android:text="0.6 BTC"
+                android:text="@string/_0_6_btc"
                 android:textColor="@color/pure_white"
                 android:textSize="24sp" />
 
