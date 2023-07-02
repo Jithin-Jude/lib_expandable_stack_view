@@ -8,4 +8,5 @@
     <string name="trip_calendar">Trip Calendar</string>
     <string name="departure_time">Departure Time</string>
     <string name="lagos_los">Lagos, LOS</string>
+    <string name="scan_face_to_complete">Scan face to complete</string>
 </resources>
