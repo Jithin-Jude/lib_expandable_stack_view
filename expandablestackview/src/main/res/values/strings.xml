@@ -10,4 +10,6 @@
     <string name="lagos_los">Lagos, LOS</string>
     <string name="scan_face_to_complete">Scan face to complete</string>
     <string name="done">Done</string>
+    <string name="you_re_all_set">You\'re all set!</string>
+    <string name="a_summary_has_been_sent_to_your_inbox">A Summary has been sent to your inbox</string>
 </resources>

@@ -45,7 +45,8 @@ class PhaseThreeBottomSheet(
         super.onViewCreated(view, savedInstanceState)
 
         binding.btmSheetLayout.setOnClickListener {
-            binding.btnDone.visibility = View.VISIBLE
+            binding.layoutScanner.visibility = View.GONE
+            binding.layoutTicket.visibility = View.VISIBLE
 
             val layoutParams = binding.btmSheetLayout.layoutParams
             val displayMetrics: DisplayMetrics = resources.displayMetrics
