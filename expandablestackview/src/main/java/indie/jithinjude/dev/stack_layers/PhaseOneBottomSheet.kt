@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -27,7 +26,6 @@ class PhaseOneBottomSheet(
 ) : BottomSheetDialogFragment() {
 
     lateinit var binding: BottomSheetPhaseOneBinding
-    var phaseTwoBtmSheetActive = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,20 +58,6 @@ class PhaseOneBottomSheet(
             binding.phaseTwoBtmSheetPop.context,
             R.anim.move_to_center_and_fade_in
         )
-//        animationMoveUpAndFadeOut.setAnimationListener(object: Animation.AnimationListener{
-//            override fun onAnimationStart(p0: Animation?) {
-//
-//            }
-//
-//            override fun onAnimationEnd(p0: Animation?) {
-//
-//            }
-//
-//            override fun onAnimationRepeat(p0: Animation?) {
-//
-//            }
-//
-//        })
 
         Handler(Looper.getMainLooper()).postDelayed({
             binding.loadingLocation.startAnimation(animationMoveUpAndFadeOut)
@@ -85,25 +69,12 @@ class PhaseOneBottomSheet(
             binding.phaseTwoBtmSheetPop.visibility = View.VISIBLE
         }, 1200)
 
-        binding.tvTimeBtn.setOnClickListener {
-            binding.tvTimeBtn.setBackgroundColor(
-                ContextCompat.getColor(
-                    binding.tvTimeBtn.context,
-                    R.color.pink
-                )
-            )
-            binding.phaseTwoBtmSheetPop.setBackgroundResource(R.drawable.rounded_corner_bottom_sheet_pink)
-            phaseTwoBtmSheetActive = true
-        }
-
         binding.phaseTwoBtmSheetPop.setOnClickListener {
-            if (phaseTwoBtmSheetActive) {
-                PhaseTwoBottomSheet.showPhaseTwoBottomSheet(
-                    childFragmentManager,
-                    mActivity,
-                    stackDismissCallback
-                )
-            }
+            PhaseTwoBottomSheet.showPhaseTwoBottomSheet(
+                childFragmentManager,
+                mActivity,
+                stackDismissCallback
+            )
         }
     }
 

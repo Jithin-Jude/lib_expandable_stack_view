@@ -169,7 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:background="@color/grey"
+                    android:background="@color/pink"
                     android:fontFamily="@font/roboto"
                     android:paddingHorizontal="20dp"
                     android:paddingVertical="10dp"
@@ -200,7 +200,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:visibility="invisible"
-            android:background="@drawable/rounded_corner_bottom_sheet_light_grey"
+            android:background="@drawable/rounded_corner_bottom_sheet_pink"
             app:layout_constraintBottom_toBottomOf="parent">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
