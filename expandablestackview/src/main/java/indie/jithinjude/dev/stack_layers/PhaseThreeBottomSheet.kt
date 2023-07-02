@@ -1,5 +1,6 @@
 package indie.jithinjude.dev.stack_layers
 
+import android.animation.ValueAnimator
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
@@ -53,8 +54,15 @@ class PhaseThreeBottomSheet(
             val layoutParams = binding.btmSheetLayout.layoutParams
             val displayMetrics: DisplayMetrics = resources.displayMetrics
             val dpHeight = displayMetrics.heightPixels
-            layoutParams.height = dpHeight
-            binding.btmSheetLayout.layoutParams = layoutParams
+
+            val va =
+                ValueAnimator.ofFloat(binding.btmSheetLayout.height.toFloat(), dpHeight.toFloat())
+            va.duration = 500 //in millis
+            va.addUpdateListener { animation ->
+                layoutParams.height = (animation.animatedValue as Float).toInt()
+                binding.btmSheetLayout.layoutParams = layoutParams
+            }
+            va.start()
         }
         binding.btnDone.setOnClickListener {
             isDismissFromDone = true
