@@ -1,7 +1,6 @@
 package indie.jithinjude.dev.stack_layers
 
 import android.app.Dialog
-import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -105,14 +104,16 @@ class PhaseOneBottomSheet(
         return dialog
     }
 
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        dismissCallback.onStackDismiss()
-    }
+//    override fun onDismiss(dialog: DialogInterface) {
+//        super.onDismiss(dialog)
+//    }
 
     val stackDismissCallback = object : ExpandedViewActivity.StackDismissListener {
-        override fun onStackDismiss() {
-            dismiss()
+        override fun onStackDismiss(dismissAll: Boolean) {
+            if (dismissAll) {
+                dismiss()
+                dismissCallback.onStackDismiss(dismissAll)
+            }
         }
     }
 

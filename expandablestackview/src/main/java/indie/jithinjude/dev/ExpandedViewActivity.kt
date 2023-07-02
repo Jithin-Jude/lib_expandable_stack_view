@@ -77,12 +77,14 @@ class ExpandedViewActivity : AppCompatActivity() {
     }
 
     val stackDismissCallback = object : StackDismissListener {
-        override fun onStackDismiss() {
-            supportFinishAfterTransition()
+        override fun onStackDismiss(dismissAll: Boolean) {
+            if (dismissAll) {
+                supportFinishAfterTransition()
+            }
         }
     }
 
     interface StackDismissListener {
-        fun onStackDismiss()
+        fun onStackDismiss(dismissAll: Boolean)
     }
 }

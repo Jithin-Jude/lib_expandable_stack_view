@@ -26,6 +26,8 @@ class PhaseThreeBottomSheet(
 
     lateinit var binding: BottomSheetPhaseThreeBinding
 
+    var isDismissFromDone = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.BottomSheetStyle)
@@ -55,6 +57,7 @@ class PhaseThreeBottomSheet(
             binding.btmSheetLayout.layoutParams = layoutParams
         }
         binding.btnDone.setOnClickListener {
+            isDismissFromDone = true
             dismiss()
         }
     }
@@ -68,7 +71,12 @@ class PhaseThreeBottomSheet(
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        dismissCallback.onStackDismiss()
+        if (isDismissFromDone) {
+            isDismissFromDone = false
+            dismissCallback.onStackDismiss(true)
+        } else {
+            dismissCallback.onStackDismiss(false)
+        }
     }
 
     companion object {
