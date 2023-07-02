@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -23,6 +24,7 @@ import indie.jithinjude.dev.databinding.BottomSheetPhaseOneBinding
 class PhaseOneBottomSheet : BottomSheetDialogFragment() {
 
     lateinit var binding: BottomSheetPhaseOneBinding
+    var phaseTwoBtmSheetActive = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,8 +72,21 @@ class PhaseOneBottomSheet : BottomSheetDialogFragment() {
             binding.layoutContent.startAnimation(animationMoveToCenterAndFadeIn)
         }, 2000)
 
+        binding.tvTimeBtn.setOnClickListener {
+            binding.tvTimeBtn.setBackgroundColor(
+                ContextCompat.getColor(
+                    binding.tvTimeBtn.context,
+                    R.color.pink
+                )
+            )
+            binding.phaseTwoBtmSheetPop.setBackgroundResource(R.drawable.rounded_corner_bottom_sheet_pink)
+            phaseTwoBtmSheetActive = true
+        }
+
         binding.phaseTwoBtmSheetPop.setOnClickListener {
-            PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
+            if (phaseTwoBtmSheetActive) {
+                PhaseTwoBottomSheet.showPhaseTwoBottomSheet(childFragmentManager)
+            }
         }
     }
 
