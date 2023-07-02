@@ -38,6 +38,12 @@ class PhaseThreeBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.btmSheetLayout.setOnClickListener {
+            val layoutParams = binding.btmSheetLayout.layoutParams
+            layoutParams.height = resources.getDimension(R.dimen.expanded_layout_height).toInt()
+            binding.btmSheetLayout.layoutParams = layoutParams
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
