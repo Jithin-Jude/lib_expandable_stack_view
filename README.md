@@ -20,11 +20,19 @@ While implementing the shared element transitions I’m able to implement the ba
 ## Future improvements
 More actions can be added to the expanded view (means more states). `ChangeBounds`, `ChangeTransform`, `ChangeImageTransform`, and `ChangeClipBounds` can be customize for the transition of each shared elements. So that it will more improve the flow.
 
+## Notes:
+
+1. <b>My major concern is to implement the dribble video UI & flow (animations) as closely as possible.</b>
+
+2. Didn't add user interaction in each Stack item content since it is a prototype (I mean only view is added.)
+
+3. BottomView stack element can be dismissed by taping just outside of the bottom sheet (I mean current highlighted stack element).
+
 Demo video:
 -
-[![demo video](https://img.youtube.com/vi/ul2OylQ4hEE/0.jpg)](https://www.youtube.com/watch?v=ul2OylQ4hEE)
+[![demo video](https://img.youtube.com/vi/RGbrFVa4TiI/0.jpg)](https://www.youtube.com/watch?v=RGbrFVa4TiI)
 
-[APK](https://drive.google.com/file/d/1toaRGN3woEaw3VTVvxQue1DottpDSxQi/view?usp=sharing "link to APK")
+[APK](https://drive.google.com/file/d/1W4CXsKe2O7rNN4Tuzu9tvKeRERpAlUQf/view?usp=sharing "link to APK")
 
 ```xml
 <indie.jithinjude.dev.ExpandableStackView
