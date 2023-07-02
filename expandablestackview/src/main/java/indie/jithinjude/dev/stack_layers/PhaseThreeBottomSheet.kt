@@ -47,6 +47,27 @@ class PhaseThreeBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prepareTapListeners()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = BottomSheetDialog(requireContext(), theme)
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        dialog.behavior.isDraggable = false
+        return dialog
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        if (isDismissFromDone) {
+            isDismissFromDone = false
+            dismissCallback.onStackDismiss(true)
+        } else {
+            dismissCallback.onStackDismiss(false)
+        }
+    }
+
+    fun prepareTapListeners() {
         binding.btmSheetLayout.setOnClickListener {
             binding.layoutScanner.visibility = View.INVISIBLE
             binding.layoutTicket.visibility = View.VISIBLE
@@ -67,23 +88,6 @@ class PhaseThreeBottomSheet(
         binding.btnDone.setOnClickListener {
             isDismissFromDone = true
             dismiss()
-        }
-    }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireContext(), theme)
-        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialog.behavior.isDraggable = false
-        return dialog
-    }
-
-    override fun onDismiss(dialog: DialogInterface) {
-        super.onDismiss(dialog)
-        if (isDismissFromDone) {
-            isDismissFromDone = false
-            dismissCallback.onStackDismiss(true)
-        } else {
-            dismissCallback.onStackDismiss(false)
         }
     }
 

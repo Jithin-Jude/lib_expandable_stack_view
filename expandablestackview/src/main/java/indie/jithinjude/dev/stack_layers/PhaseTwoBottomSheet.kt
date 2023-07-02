@@ -45,6 +45,11 @@ class PhaseTwoBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prepareAnimations()
+        prepareTapListeners()
+    }
+
+    fun prepareAnimations() {
         val animationMoveToCenterAndFadeIn = AnimationUtils.loadAnimation(
             binding.layoutContent.context,
             R.anim.move_to_center_and_fade_in
@@ -64,7 +69,9 @@ class PhaseTwoBottomSheet(
             binding.phaseThreeBtmSheetPop.startAnimation(animationMoveToCenter)
             binding.phaseThreeBtmSheetPop.visibility = View.VISIBLE
         }, 300)
+    }
 
+    fun prepareTapListeners() {
         binding.phaseThreeBtmSheetPop.setOnClickListener {
             PhaseThreeBottomSheet.showPhaseThreeBottomSheet(
                 childFragmentManager,

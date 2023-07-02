@@ -45,6 +45,18 @@ class PhaseOneBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        prepareAnimations()
+        prepareTapListeners()
+    }
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = BottomSheetDialog(requireContext(), theme)
+        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        dialog.behavior.isDraggable = false
+        return dialog
+    }
+
+    fun prepareAnimations() {
         val animationMoveUpAndFadeOut = AnimationUtils.loadAnimation(
             binding.loadingLocation.context,
             R.anim.move_up_and_fade_out
@@ -68,7 +80,9 @@ class PhaseOneBottomSheet(
             binding.phaseTwoBtmSheetPop.startAnimation(animationMoveToCenter)
             binding.phaseTwoBtmSheetPop.visibility = View.VISIBLE
         }, 1200)
+    }
 
+    fun prepareTapListeners() {
         binding.phaseTwoBtmSheetPop.setOnClickListener {
             PhaseTwoBottomSheet.showPhaseTwoBottomSheet(
                 childFragmentManager,
@@ -77,17 +91,6 @@ class PhaseOneBottomSheet(
             )
         }
     }
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireContext(), theme)
-        dialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        dialog.behavior.isDraggable = false
-        return dialog
-    }
-
-//    override fun onDismiss(dialog: DialogInterface) {
-//        super.onDismiss(dialog)
-//    }
 
     val stackDismissCallback = object : ExpandedViewActivity.StackDismissListener {
         override fun onStackDismiss(dismissAll: Boolean) {
