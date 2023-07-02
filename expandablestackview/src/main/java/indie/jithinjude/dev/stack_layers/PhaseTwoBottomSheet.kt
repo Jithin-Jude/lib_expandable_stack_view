@@ -2,9 +2,12 @@ package indie.jithinjude.dev.stack_layers
 
 import android.app.Dialog
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -42,8 +45,27 @@ class PhaseTwoBottomSheet(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val animationMoveToCenterAndFadeIn = AnimationUtils.loadAnimation(
+            binding.layoutContent.context,
+            R.anim.move_to_center_and_fade_in
+        )
 
-        binding.phaseTwoBtmSheetPop.setOnClickListener {
+        val animationMoveToCenter = AnimationUtils.loadAnimation(
+            binding.phaseThreeBtmSheetPop.context,
+            R.anim.move_to_center_and_fade_in
+        )
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.layoutContent.startAnimation(animationMoveToCenterAndFadeIn)
+            binding.layoutContent.visibility = View.VISIBLE
+        }, 100)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.phaseThreeBtmSheetPop.startAnimation(animationMoveToCenter)
+            binding.phaseThreeBtmSheetPop.visibility = View.VISIBLE
+        }, 300)
+
+        binding.phaseThreeBtmSheetPop.setOnClickListener {
             PhaseThreeBottomSheet.showPhaseThreeBottomSheet(
                 childFragmentManager,
                 mActivity,

@@ -52,7 +52,12 @@ class PhaseOneBottomSheet(
             R.anim.move_up_and_fade_out
         )
         val animationMoveToCenterAndFadeIn = AnimationUtils.loadAnimation(
-            binding.loadingLocation.context,
+            binding.layoutContent.context,
+            R.anim.move_to_center_and_fade_in
+        )
+
+        val animationMoveToCenter = AnimationUtils.loadAnimation(
+            binding.phaseTwoBtmSheetPop.context,
             R.anim.move_to_center_and_fade_in
         )
 //        animationMoveUpAndFadeOut.setAnimationListener(object: Animation.AnimationListener{
@@ -74,6 +79,11 @@ class PhaseOneBottomSheet(
             binding.loadingLocation.startAnimation(animationMoveUpAndFadeOut)
             binding.layoutContent.startAnimation(animationMoveToCenterAndFadeIn)
         }, 1000)
+
+        Handler(Looper.getMainLooper()).postDelayed({
+            binding.phaseTwoBtmSheetPop.startAnimation(animationMoveToCenter)
+            binding.phaseTwoBtmSheetPop.visibility = View.VISIBLE
+        }, 1200)
 
         binding.tvTimeBtn.setOnClickListener {
             binding.tvTimeBtn.setBackgroundColor(

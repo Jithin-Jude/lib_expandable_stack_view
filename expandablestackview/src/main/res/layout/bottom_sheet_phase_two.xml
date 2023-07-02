@@ -18,6 +18,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -81,9 +82,10 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/phaseTwoBtmSheetPop"
+            android:id="@+id/phaseThreeBtmSheetPop"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:visibility="invisible"
             android:background="@drawable/rounded_corner_bottom_sheet_grey"
             app:layout_constraintBottom_toBottomOf="parent">
 
