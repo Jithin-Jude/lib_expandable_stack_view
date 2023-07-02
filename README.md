@@ -66,6 +66,9 @@ https://stackoverflow.com/a/33859633/6914403
 Geeks for Geeks:<br/>
 https://www.geeksforgeeks.org/shared-element-transition-in-android-with-example/
 
+BottomSheets:<br/>
+https://www.geeksforgeeks.org/modal-bottom-sheet-in-android-with-examples/
+
 Value animator:<br/>
 https://stackoverflow.com/a/33905049/6914403
 
