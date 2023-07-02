@@ -56,6 +56,9 @@ binding.esvLayout.prepareExpandableStackView(this, stackElementList)
 Glide: for image loading:<br/>
 https://github.com/bumptech/glide
 
+Lottie:<br/>
+https://github.com/airbnb/lottie-android
+
 ## References
 Codepath android guides:<br/>
 https://github.com/codepath/android_guides/wiki/Shared-Element-Activity-Transition
